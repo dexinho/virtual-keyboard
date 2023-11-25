@@ -1,0 +1,85 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: rgb(212, 206, 198);
+  font-family: 'Lato';
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+:root {
+  --keys-color: #3f3f3f;
+}
+
+#keyboard-container {
+  position: absolute;
+  bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 3px;
+  flex-wrap: wrap;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 0);
+  border: 1px solid black;
+  background-color: black;
+  width: 850px;
+  padding: 3px;
+  padding-top: 2rem;
+}
+
+.keyboard-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  height: 50px;
+  overflow: hidden;
+  gap: 3px;
+}
+
+.keys {
+  background-color: var(--keys-color);
+  font-size: 1.2rem;
+  text-align: center;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keys:hover {
+  background-color: #4f4f4f;
+  cursor: pointer;
+}
+
+#first-row,
+#second-row,
+#third-row,
+#fourth-row,
+#fifth-row {
+  display: grid;
+}
+
+#first-row {
+  grid-template-columns: repeat(13, 50px) 2fr;
+}
+
+#second-row {
+  grid-template-columns: 2fr repeat(13, 50px) 2fr;
+}
+
+#third-row {
+  grid-template-columns: 2fr repeat(11, 50px) 2fr;
+}
+
+#fourth-row {
+  grid-template-columns: 2fr repeat(10, 50px) 2fr;
+}
+
+#fifth-row {
+  grid-template-columns: 90px 90px 1fr 90px 90px;
+}
