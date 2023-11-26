@@ -10,75 +10,239 @@
 </head>
 
 <body>
+  <input type="text">
+  <input type="text">
+  <textarea cols="30" rows="10"></textarea>
   <div id="keyboard-container">
     <div class="keyboard-row" id="first-row">
-      <div class="keys first-row-keys">`</div>
-      <div class="keys first-row-keys">1</div>
-      <div class="keys first-row-keys">2</div>
-      <div class="keys first-row-keys">3</div>
-      <div class="keys first-row-keys">4</div>
-      <div class="keys first-row-keys">5</div>
-      <div class="keys first-row-keys">6</div>
-      <div class="keys first-row-keys">7</div>
-      <div class="keys first-row-keys">8</div>
-      <div class="keys first-row-keys">9</div>
-      <div class="keys first-row-keys">0</div>
-      <div class="keys first-row-keys">-</div>
-      <div class="keys first-row-keys">=</div>
-      <div class="keys first-row-keys">backSpace</div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">`</div>
+        <div class="secondary-key">~</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">1</div>
+        <div class="secondary-key">!</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">2</div>
+        <div class="secondary-key">@</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">3</div>
+        <div class="secondary-key">#</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">4</div>
+        <div class="secondary-key">$</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">5</div>
+        <div class="secondary-key">%</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">6</div>
+        <div class="secondary-key">^</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">7</div>
+        <div class="secondary-key">&</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">8</div>
+        <div class="secondary-key">*</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">9</div>
+        <div class="secondary-key">(</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">0</div>
+        <div class="secondary-key">)</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">-</div>
+        <div class="secondary-key">_</div>
+      </div>
+      <div class="keys dual-keys first-row-keys">
+        <div class="primary-key">=</div>
+        <div class="secondary-key">+</div>
+      </div>
+      <div class="keys first-row-keys">
+        <div class="primary-key">Backspace</div>
+        <div class="secondary-key"></div>
+      </div>
     </div>
     <div class="keyboard-row" id="second-row">
-      <div class="keys second-row-keys">Tab</div>
-      <div class="keys second-row-keys">q</div>
-      <div class="keys second-row-keys">w</div>
-      <div class="keys second-row-keys">e</div>
-      <div class="keys second-row-keys">r</div>
-      <div class="keys second-row-keys">t</div>
-      <div class="keys second-row-keys">y</div>
-      <div class="keys second-row-keys">u</div>
-      <div class="keys second-row-keys">i</div>
-      <div class="keys second-row-keys">o</div>
-      <div class="keys second-row-keys">p</div>
-      <div class="keys second-row-keys">[</div>
-      <div class="keys second-row-keys">]</div>
-      <div class="keys second-row-keys">\</div>
-      <div class="keys second-row-keys">Del</div>
+      <div class="keys second-row-keys">
+        <div class="primary-key">Tab</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="letters primary-key">q</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="letters primary-key">w</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="letters primary-key">e</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="letters primary-key">r</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="letters primary-key">t</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="letters primary-key">y</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="letters primary-key">u</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="letters primary-key">i</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="letters primary-key">o</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="letters primary-key">p</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys dual-keys second-row-keys">
+        <div class="primary-key">[</div>
+        <div class="secondary-key">{</div>
+      </div>
+      <div class="keys dual-keys second-row-keys">
+        <div class="primary-key">]</div>
+        <div class="secondary-key">}</div>
+      </div>
+      <div class="keys dual-keys second-row-keys">
+        <div class="primary-key">\</div>
+        <div class="secondary-key">|</div>
+      </div>
+      <div class="keys second-row-keys">
+        <div class="primary-key">Del</div>
+        <div class="secondary-key"></div>
+      </div>
     </div>
     <div class="keyboard-row" id="third-row">
-      <div class="keys third-row-keys">Caps</div>
-      <div class="keys third-row-keys">a</div>
-      <div class="keys third-row-keys">s</div>
-      <div class="keys third-row-keys">d</div>
-      <div class="keys third-row-keys">f</div>
-      <div class="keys third-row-keys">g</div>
-      <div class="keys third-row-keys">h</div>
-      <div class="keys third-row-keys">j</div>
-      <div class="keys third-row-keys">k</div>
-      <div class="keys third-row-keys">l</div>
-      <div class="keys third-row-keys">;</div>
-      <div class="keys third-row-keys">'</div>
-      <div class="keys third-row-keys">Enter</div>
+      <div class="keys third-row-keys" id="caps-key">
+        <div class="primary-key">Caps</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys third-row-keys">
+        <div class="letters primary-key">a</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys third-row-keys">
+        <div class="letters primary-key">s</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys third-row-keys">
+        <div class="letters primary-key">d</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys third-row-keys">
+        <div class="letters primary-key">f</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys third-row-keys">
+        <div class="letters primary-key">g</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys third-row-keys">
+        <div class="letters primary-key">h</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys third-row-keys">
+        <div class="letters primary-key">j</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys third-row-keys">
+        <div class="letters primary-key">k</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys third-row-keys">
+        <div class="letters primary-key">l</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys dual-keys third-row-keys">
+        <div class="primary-key">;</div>
+        <div class="secondary-key">:</div>
+      </div>
+      <div class="keys dual-keys third-row-keys">
+        <div class="primary-key">'</div>
+        <div class="secondary-key">"</div>
+      </div>
+      <div class="keys third-row-keys">
+        <div class="primary-key">Enter</div>
+        <div class="secondary-key"></div>
+      </div>
     </div>
     <div class="keyboard-row" id="fourth-row">
-      <div class="keys fourth-row-keys">Shift</div>
-      <div class="keys fourth-row-keys">z</div>
-      <div class="keys fourth-row-keys">x</div>
-      <div class="keys fourth-row-keys">c</div>
-      <div class="keys fourth-row-keys">v</div>
-      <div class="keys fourth-row-keys">b</div>
-      <div class="keys fourth-row-keys">n</div>
-      <div class="keys fourth-row-keys">m</div>
-      <div class="keys fourth-row-keys">,</div>
-      <div class="keys fourth-row-keys">.</div>
-      <div class="keys fourth-row-keys">/</div>
-      <div class="keys fourth-row-keys">Shift</div>
+      <div class="keys fourth-row-keys shift-keys">
+        <div class="primary-key">Shift</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys fourth-row-keys">
+        <div class="letters primary-key">z</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys fourth-row-keys">
+        <div class="letters primary-key">x</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys fourth-row-keys">
+        <div class="letters primary-key">c</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys fourth-row-keys">
+        <div class="letters primary-key">v</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys fourth-row-keys">
+        <div class="letters primary-key">b</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys fourth-row-keys">
+        <div class="letters primary-key">n</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys fourth-row-keys">
+        <div class="letters primary-key">m</div>
+        <div class="secondary-key"></div>
+      </div>
+      <div class="keys dual-keys fourth-row-keys">
+        <div class="primary-key">,</div>
+        <div class="secondary-key">&lt;</div>
+      </div>
+      <div class="keys dual-keys fourth-row-keys">
+        <div class="primary-key">.</div>
+        <div class="secondary-key">></div>
+      </div>
+      <div class="keys dual-keys fourth-row-keys">
+        <div class="primary-key">/</div>
+        <div class="secondary-key">?</div>
+      </div>
+      <div class="keys fourth-row-keys shift-keys">
+        <div class="primary-key">Shift</div>
+        <div class="secondary-key"></div>
+      </div>
     </div>
     <div class="keyboard-row" id="fifth-row">
-      <div class="keys fifth-row-keys">Ctrl</div>
-      <div class="keys fifth-row-keys">Alt</div>
-      <div class="keys fifth-row-keys">|______|</div>
-      <div class="keys fifth-row-keys">Alt</div>
-      <div class="keys fifth-row-keys">Ctrl</div>
+      <div class="keys fourth-row-keys">
+        <div class="primary-key">________</div>
+        <div class="secondary-key"></div>
+      </div>
     </div>
   </div>
 </body>
