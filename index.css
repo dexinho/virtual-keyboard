@@ -11,7 +11,7 @@
 }
 
 :root {
-  --keys-color: #3f3f3f;
+  --keys-color: #333333;
 }
 
 #keyboard-container {
@@ -42,13 +42,15 @@
 }
 
 .keys {
+  position: relative;
   background-color: var(--keys-color);
   font-size: 1.2rem;
   text-align: center;
   height: 50px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  padding-bottom: 0.5rem;
 }
 
 .keys:hover {
@@ -56,11 +58,18 @@
   cursor: pointer;
 }
 
+.keys:active {
+  background-color: royalblue;
+}
+
+.key-pressed-color {
+  background-color: royalblue
+}
+
 #first-row,
 #second-row,
 #third-row,
-#fourth-row,
-#fifth-row {
+#fourth-row {
   display: grid;
 }
 
@@ -81,5 +90,35 @@
 }
 
 #fifth-row {
-  grid-template-columns: 90px 90px 1fr 90px 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#fifth-row > * {
+  width: 100%;
+}
+
+.secondary-key {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.4rem;
+  color: rgb(104, 104, 96);
+  font-size: 1rem;
+}
+
+input {
+  padding: 1rem;
+  height: 100px;
+  width: 200px;
+  color: black;
+  font-size: 2rem;
+}
+
+input:focus {
+  outline: 0;
+}
+
+textarea:focus {
+  outline: 0;
 }
