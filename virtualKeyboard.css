@@ -1,0 +1,116 @@
+:root {
+  --keys-color: #333333;
+  --font-color: rgb(212, 206, 198);
+}
+
+#keyboard-container-vk * {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  font-family: 'Lato';
+  box-sizing: border-box;
+}
+
+#keyboard-container-vk {
+  position: absolute;
+  bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 3px;
+  flex-wrap: wrap;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 0);
+  border: 1px solid black;
+  background-color: black;
+  width: 850px;
+  padding: 3px;
+  padding-top: 2rem;
+  z-index: 2147483647;
+}
+
+.keyboard-row-vk {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  height: 50px;
+  overflow: hidden;
+  gap: 3px;
+}
+
+.keys-vk {
+  position: relative;
+  background-color: var(--keys-color);
+  font-size: 1.2rem;
+  text-align: center;
+  height: 50px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+  color: var(--font-color);
+}
+
+.keys-vk:hover {
+  background-color: #4f4f4f;
+  cursor: pointer;
+}
+
+.keys-vk:active {
+  background-color: royalblue;
+}
+
+.key-pressed-color-vk {
+  background-color: royalblue
+}
+
+#first-row-vk,
+#second-row-vk,
+#third-row-vk,
+#fourth-row-vk {
+  display: grid;
+}
+
+#first-row-vk {
+  grid-template-columns: repeat(13, 50px) 2fr;
+}
+
+#second-row-vk {
+  grid-template-columns: 2fr repeat(13, 50px) 2fr;
+}
+
+#third-row-vk {
+  grid-template-columns: 2fr repeat(11, 50px) 2fr;
+}
+
+#fourth-row-vk {
+  grid-template-columns: 2fr repeat(10, 50px) 2fr;
+}
+
+#fifth-row-vk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#fifth-row-vk>* {
+  width: 100%;
+}
+
+.secondary-key-vk {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.4rem;
+  color: rgb(104, 104, 96);
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: 0;
+}
+
+textarea:focus {
+  outline: 0;
+}
