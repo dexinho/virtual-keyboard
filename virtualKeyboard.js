@@ -1,5 +1,5 @@
 (function () {
-  const firstRowKeys = [
+  const firstRowKeysFk = [
     { primary: "`", secondary: "~" },
     { primary: "1", secondary: "!" },
     { primary: "2", secondary: "@" },
@@ -16,7 +16,7 @@
     { primary: "Backspace", secondary: "" },
   ];
 
-  const secondRowKeys = [
+  const secondRowKeysFk = [
     { primary: "Tab", secondary: "" },
     { primary: "q", secondary: "" },
     { primary: "w", secondary: "" },
@@ -34,7 +34,7 @@
     { primary: "Del", secondary: "" },
   ];
 
-  const thirdRowKeys = [
+  const thirdRowKeysFk = [
     { primary: "Caps", secondary: "" },
     { primary: "a", secondary: "" },
     { primary: "s", secondary: "" },
@@ -50,7 +50,7 @@
     { primary: "Enter", secondary: "" },
   ];
 
-  const fourthRowKeys = [
+  const fourthRowKeysFk = [
     { primary: "Shift", secondary: "" },
     { primary: "z", secondary: "" },
     { primary: "x", secondary: "" },
@@ -65,42 +65,88 @@
     { primary: "Shift", secondary: "" },
   ];
 
-  const fifthRowKeys = [{ primary: "________", secondary: "" }];
+  const fifthRowKeysFk = [{ primary: "________", secondary: "" }];
 
-  function createKeyboardLayout(...rows) {
-    const keyboardContainer = document.createElement("div");
-    document.body.append(keyboardContainer);
-    keyboardContainer.id = "keyboard-container-vk";
+  const numericKeyboardContainerNk = document.createElement("div");
+  function createNumericKeyboard() {
+    const numericKeyboardNk = document.createElement("div");
+    makeKeyboardDraggable(numericKeyboardContainerNk);
+    let keyboardRowNk = document.createElement("div");
+
+    numericKeyboardContainerNk.id = "numeric-keyboard-container-nk";
+    numericKeyboardNk.id = "numeric-keyboard-nk";
+
+    keyboardRowNk.classList.add("keyboard-row-nk");
+
+    document.body.append(numericKeyboardContainerNk);
+    numericKeyboardContainerNk.append(numericKeyboardNk);
+    numericKeyboardNk.append(keyboardRowNk);
+
+    for (let i = 0; i < 9; i++) {
+      const keysNk = document.createElement("div");
+      keysNk.textContent = i + 1;
+      keysNk.classList.add("keys-nk");
+
+      if (i % 3 === 0) {
+        keyboardRowNk = document.createElement("div");
+        keyboardRowNk.classList.add("keyboard-row-nk");
+        numericKeyboardNk.append(keyboardRowNk);
+      }
+
+      keyboardRowNk.append(keysNk);
+    }
+
+    keyboardRowNk = document.createElement("div");
+    const keysNk0 = document.createElement("div");
+    const keysNkDelete = document.createElement("div");
+
+    keysNk0.textContent = "0";
+    keysNkDelete.textContent = "Delete";
+
+    keyboardRowNk.classList.add("keyboard-row-nk");
+    keysNk0.classList.add("keys-nk");
+    keysNkDelete.classList.add("keys-nk");
+
+    numericKeyboardNk.append(keyboardRowNk);
+    keyboardRowNk.append(keysNk0);
+    keyboardRowNk.append(keysNkDelete);
+  }
+
+  const fullKeyboardContainer = document.createElement("div");
+  function createFullKeyboardLayout(...rows) {
+    document.body.append(fullKeyboardContainer);
+    fullKeyboardContainer.id = "full-keyboard-container-fk";
+    makeKeyboardDraggable(fullKeyboardContainer);
 
     rows.forEach((row, index) => {
       const keyboardRow = document.createElement("div");
-      keyboardRow.classList.add("keyboard-row-vk");
+      keyboardRow.classList.add("keyboard-row-fk");
       keyboardRow.id =
         index === 0
-          ? "first-row-vk"
+          ? "first-row-fk"
           : index === 1
-          ? "second-row-vk"
+          ? "second-row-fk"
           : index === 2
-          ? "third-row-vk"
+          ? "third-row-fk"
           : index === 3
-          ? "fourth-row-vk"
-          : "fifth-row-vk";
+          ? "fourth-row-fk"
+          : "fifth-row-fk";
 
-      keyboardContainer.append(keyboardRow);
+      fullKeyboardContainer.append(keyboardRow);
       row.forEach((keys) => {
         const primaryKey = document.createElement("div");
         const secondaryKey = document.createElement("div");
         const keyboardKeys = document.createElement("div");
 
         const keyboardKeysClasses = [
-          "keys-vk",
-          ...(keys.primary === "Shift" ? ["shift-keys-vk"] : []),
-          ...(keys.secondary ? ["dual-keys-vk"] : []),
+          "keys-fk",
+          ...(keys.primary === "Shift" ? ["shift-keys-fk"] : []),
+          ...(keys.secondary ? ["dual-keys-fk"] : []),
         ];
         const primaryKeyClasses = [
-          "primary-key-vk",
+          "primary-key-fk",
           ...(/[a-z]/.test() && keys.primary.length === 1
-            ? ["letters-vk"]
+            ? ["letters-fk"]
             : []),
         ];
 
@@ -109,7 +155,7 @@
 
         keyboardKeys.classList.add(...keyboardKeysClasses);
         primaryKey.classList.add(...primaryKeyClasses);
-        secondaryKey.classList.add("secondary-key-vk");
+        secondaryKey.classList.add("secondary-key-fk");
 
         keyboardRow.append(keyboardKeys);
         keyboardKeys.append(primaryKey);
@@ -118,38 +164,135 @@
     });
   }
 
-  createKeyboardLayout(
-    firstRowKeys,
-    secondRowKeys,
-    thirdRowKeys,
-    fourthRowKeys,
-    fifthRowKeys
+  createFullKeyboardLayout(
+    firstRowKeysFk,
+    secondRowKeysFk,
+    thirdRowKeysFk,
+    fourthRowKeysFk,
+    fifthRowKeysFk
   );
 
-  const letters = document.querySelectorAll(".letters-vk");
-  const keys = document.querySelectorAll(".keys-vk");
-  const dualKeys = document.querySelectorAll(".dual-keys-vk");
-  const shiftKeys = document.querySelectorAll(".shift-keys-vk");
+  createNumericKeyboard();
+
+  function makeKeyboardDraggable(keyboardContainerVk) {
+    let offsetX,
+      offsetY,
+      isDragging = false;
+
+    keyboardContainerVk.addEventListener("mousedown", (e) => {
+      const rect = keyboardContainerVk.getBoundingClientRect();
+      const paddingTop = parseInt(
+        getComputedStyle(keyboardContainerVk).paddingTop
+      );
+      if (
+        rect.x + rect.width >= e.clientX &&
+        rect.x <= e.clientX &&
+        rect.y + paddingTop >= e.clientY &&
+        rect.y <= e.clientY
+      ) {
+        isDragging = true;
+        offsetX = e.clientX - rect.x;
+        offsetY = e.clientY - rect.y;
+      }
+    });
+
+    keyboardContainerVk.addEventListener("mousemove", (e) => {
+      const clientY = e.clientY;
+      const keyboardY = keyboardContainerVk.getBoundingClientRect().y;
+      const computedKeyboard = getComputedStyle(keyboardContainerVk);
+      const keyboardWidth = parseInt(computedKeyboard.width);
+      const borderWidth = parseInt(computedKeyboard.borderWidth);
+      const paddingLeft = parseInt(computedKeyboard.paddingLeft);
+      const paddingTop = parseInt(computedKeyboard.paddingTop);
+      const totalX =
+        e.clientX - offsetX + keyboardWidth / 2 + borderWidth + paddingLeft;
+      const totalY = e.clientY - offsetY;
+
+      if (clientY - keyboardY <= paddingTop + borderWidth) {
+        keyboardContainerVk.style.cursor = "grab";
+      } else keyboardContainerVk.style.cursor = "auto";
+
+      if (isDragging) {
+        keyboardContainerVk.style.left = `${totalX}px`;
+        keyboardContainerVk.style.top = `${totalY}px`;
+        keyboardContainerVk.style.right = `auto`;
+        keyboardContainerVk.style.bottom = "auto";
+      }
+    });
+
+    keyboardContainerVk.addEventListener("mouseup", () => {
+      if (isDragging) {
+        isDragging = !isDragging;
+      }
+    });
+  }
+
+  const lettersFk = document.querySelectorAll(".letters-fk");
+  const keysFk = document.querySelectorAll(".keys-fk");
+  const keysNk = document.querySelectorAll(".keys-nk");
+  const dualKeysFk = document.querySelectorAll(".dual-keys-fk");
+  const ShiftKeysFk = document.querySelectorAll(".shift-keys-fk");
   let isCapsPressed = false;
   let isShiftPressed = false;
   let focusedInput, selectionStart, selectionEnd;
+  const setRangeTextTypes = [
+    "number",
+    "email",
+    "date",
+    "time",
+    "week",
+    "month",
+  ];
 
   document.addEventListener("click", (e) => {
-    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") {
       focusedInput = document.activeElement;
+      if (e.target.type === "number") {
+        numericKeyboardContainerNk.style.display = "flex";
+        fullKeyboardContainer.style.display = "none";
+      } else {
+        fullKeyboardContainer.style.display = "grid";
+        numericKeyboardContainerNk.style.display = "none";
+      }
+    }
   });
 
-  keys.forEach((keyboardKey) => {
-    keyboardKey.addEventListener("click", () => {
-      const key = keyboardKey.firstElementChild;
+  keysNk.forEach((keyNk) => {
+    keyNk.addEventListener("click", () => {
+      if (keyNk.textContent === "Delete") {
+        focusedInput.value = focusedInput.value.slice(0, -1);
+      } else {
+        focusedInput.value += keyNk.textContent;
+      }
+    });
+  });
+
+  keysFk.forEach((keyFk) => {
+    keyFk.addEventListener("click", () => {
+      const key = keyFk.firstElementChild;
       if (key.textContent === "Caps" || key.textContent === "Shift")
         handleShiftAndCaps(key.parentElement);
 
       if (!focusedInput) return;
-      if (
-        focusedInput.tagName === "INPUT" ||
-        focusedInput.tagName === "TEXTAREA"
-      ) {
+      if (setRangeTextTypes.includes(focusedInput.type)) {
+        if (key.textContent === "Backspace")
+          focusedInput.value = focusedInput.value.slice(0, -1);
+        else if (key.textContent === "Tab") focusedInput.value += "    ";
+        else if (key.textContent === "________") focusedInput.value += " ";
+        else if (key.textContent === "Enter") focusedInput.value += "\n";
+        else if (key.textContent === "Shift" || key.textContent === "Caps")
+          return;
+        else {
+          focusedInput.value += key.textContent;
+          if (isShiftPressed) {
+            changeDualKeys();
+            ShiftKeysFk.forEach((key) => toggleHighlight(key));
+            isShiftPressed = !isShiftPressed;
+            capsShiftCombination();
+          }
+        }
+      } else {
+        inputType = focusedInput.type;
         focusedInput.focus();
         let replacement;
         selectionStart = focusedInput.selectionStart;
@@ -177,7 +320,7 @@
           replacement = key.textContent;
           if (isShiftPressed) {
             changeDualKeys();
-            shiftKeys.forEach((key) => toggleHighlight(key));
+            ShiftKeysFk.forEach((key) => toggleHighlight(key));
             isShiftPressed = !isShiftPressed;
             capsShiftCombination();
           }
@@ -193,7 +336,7 @@
     });
 
     function changeDualKeys() {
-      dualKeys.forEach((key) => {
+      dualKeysFk.forEach((key) => {
         const primaryKey = key.firstElementChild;
         const secondaryKey = key.lastElementChild;
 
@@ -211,16 +354,17 @@
       } else if (_key.innerText === "Shift") {
         isShiftPressed = !isShiftPressed;
         changeDualKeys();
-        shiftKeys.forEach((key) => toggleHighlight(key));
+        ShiftKeysFk.forEach((key) => toggleHighlight(key));
       }
 
       capsShiftCombination();
     };
 
     const capsShiftCombination = () => {
-      letters.forEach((letter) => {
+      lettersFk.forEach((letter) => {
         letter.innerText =
-          (isCapsPressed || isShiftPressed) && !(isCapsPressed && isShiftPressed)
+          (isCapsPressed || isShiftPressed) &&
+          !(isCapsPressed && isShiftPressed)
             ? letter.innerText.toUpperCase()
             : letter.innerText.toLowerCase();
       });
@@ -228,13 +372,13 @@
 
     function toggleHighlight(_key) {
       if (_key.innerText === "Caps") {
-        _key.classList.toggle("key-pressed-color-vk");
+        _key.classList.toggle("key-pressed-color-fk");
         return;
       }
 
-      if (_key.classList.contains("key-pressed-color-vk"))
-        _key.classList.remove("key-pressed-color-vk");
-      else _key.classList.add("key-pressed-color-vk");
+      if (_key.classList.contains("key-pressed-color-fk"))
+        _key.classList.remove("key-pressed-color-fk");
+      else _key.classList.add("key-pressed-color-fk");
     }
   });
 })();
