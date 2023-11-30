@@ -133,6 +133,7 @@ textarea:focus {
   padding-top: 2rem;
   width: 310px;
   display: none;
+  z-index: 2147483647;
 }
 
 #numeric-keyboard-nk {
@@ -161,4 +162,15 @@ textarea:focus {
 .keyboard-row-nk:last-child {
   display: grid;
   grid-template-columns: 100px 1fr;
+}
+
+#inputs-test-area-vk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#inputs-test-area-vk > * {
+  width: 150px;
 }
